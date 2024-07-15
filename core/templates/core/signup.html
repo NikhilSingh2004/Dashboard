@@ -1,0 +1,83 @@
+<!-- signup.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Sign Up</div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <!-- Display form errors -->
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong>
+                        <ul>
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label for="id_first_name" class="form-label" aria-required="true">First Name</label>
+                        <input type="text" class="form-control" id="id_first_name" name="first_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_last_name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="id_last_name" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_profile_picture" class="form-label">Profile Picture</label>
+                        <input type="file" class="form-control" id="id_profile_picture" name="profile_picture">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="id_username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="id_email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="id_password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_confirm_password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="id_confirm_password" name="confirm_password"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_address_line1" class="form-label">Address Line 1</label>
+                        <input type="text" class="form-control" id="id_address_line1" name="address_line1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="id_city" name="city" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="id_state" name="state" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_pincode" class="form-label">Pincode</label>
+                        <input type="text" class="form-control" id="id_pincode" name="pincode" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
